@@ -104,7 +104,7 @@ namespace Bartender_M9D47D
             this.Controls.Add(this.groupBoxB);
             this.Controls.Add(this.groupBoxK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); // <----------- comment this line to compile with mono
             this.Name = "ablak";
             this.Text = "Bartender";
             this.ResumeLayout(false);
