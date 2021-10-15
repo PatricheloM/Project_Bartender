@@ -45,12 +45,15 @@ namespace Bartender_M9D47D
             this.ClientSize = new Size(ScreenWidth(), ScreenHeight());
             this.exitButton.Location = new Point(ScreenWidth() - 55, 5);
             this.minimizeButton.Location = new Point(ScreenWidth() - 110, 5);
-            this.pluszK.Location = new Point(ScreenWidth() - 55, 60);
+            this.itallapButton.Location = new Point(ScreenWidth() - 225, 5);
+            this.pluszK.Location = new Point((ScreenWidth() / 3) * 2 - 5, 60);
             this.pluszB.Location = new Point(5, 60);
             this.groupBoxB.Location = new Point(10, 60);
             this.groupBoxB.Size = new Size((ScreenWidth() / 3) * 2 - 20, ScreenHeight() - 80);
             this.groupBoxK.Location = new Point((ScreenWidth() / 3) * 2, 60);
             this.groupBoxK.Size = new Size(ScreenWidth() / 3 - 10, ScreenHeight() - 80);
+            this.belsoLabel.Location = new Point(55, 10);
+            this.kulsoLabel.Location = new Point(55, 10);
 
         }
 
@@ -66,6 +69,12 @@ namespace Bartender_M9D47D
             publicExceptionHandling.saveThenExit(0);
         }
 
+        private void itallapButton_Click(object sender, EventArgs e)
+        {
+            itallap itallap = new itallap();
+            itallap.ShowDialog();
+        }
+
         //dynamic table creation--------------------------------------------------------------------------------------
 
         private void pluszB_Click(object sender, EventArgs e)
@@ -75,7 +84,7 @@ namespace Bartender_M9D47D
             this.groupBoxB.Controls.Add(newPXB);
             try
             {
-                newPXB.Image = Image.FromFile("resources\\szabad.png");
+                newPXB.Image = Image.FromFile("resources/szabad.png");
             }
             catch (FileNotFoundException)
             {
@@ -98,7 +107,7 @@ namespace Bartender_M9D47D
             this.groupBoxK.Controls.Add(newPXK);
             try
             {
-                newPXK.Image = Image.FromFile("resources\\szabad.png");
+                newPXK.Image = Image.FromFile("resources/szabad.png");
             }
             catch (FileNotFoundException)
             {
@@ -226,7 +235,7 @@ namespace Bartender_M9D47D
 
         private void newPXB_DoubleClick(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter("resources\\_currentTable");
+            StreamWriter sw = new StreamWriter("resources/_currentTable");
             sw.Write("{0}B", hoveredObject);
             sw.Close();
             lista lista = new lista();
@@ -235,11 +244,12 @@ namespace Bartender_M9D47D
 
         private void newPXK_DoubleClick(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter("resources\\_currentTable");
+            StreamWriter sw = new StreamWriter("resources/_currentTable");
             sw.Write("{0}K", hoveredObject);
             sw.Close();
             lista lista = new lista();
             lista.ShowDialog();
         }
+
     }
 }

@@ -7,8 +7,8 @@ set bartender=%cdCurrentPath%
 set compile=csc *.cs -r:System.Windows.Forms.dll
 set run=mono main.exe
 c:
-echo ________________________________________________________
 cd C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Mono
+echo ________________________________________________________
 echo  The mono environment started if everything went fine. 
 echo       Now to compile and run the app just write
 echo      "%%drive%% & %%bartender%% & %%compile%% & %%run%%"

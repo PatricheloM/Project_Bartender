@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE play SYSTEM "itallap.dtd"[]>
+<?xml-stylesheet type="text/css" href="itallap.css"?>
+<drinks>
+  <item id="1">
+    <name>Heineken</name>
+    <price>450</price>
+  </item>
+  <item id="2">
+    <name>Red Bull</name>
+    <price>500</price>
+  </item>
+  <item id="3">
+    <name>Korsó Soproni</name>
+    <price>350</price>
+  </item>
+  <item id="4">
+    <name>Tátra tea 72</name>
+    <price>900</price>
+  </item>
+  <item id="5">
+    <name>Tátra tea 62</name>
+    <price>900</price>
+  </item>
+  <item id="6">
+    <name>Tátra tea 52</name>
+    <price>900</price>
+  </item>
+  <item id="7">
+    <name>Víz</name>
+    <price>250</price>
+  </item>
+  <item id="8">
+    <name>Coca Cola</name>
+    <price>350</price>
+  </item>
+  <item id="9">
+    <name>Fanta</name>
+    <price>350</price>
+  </item>
+  <item id="10">
+    <name>Kinley</name>
+    <price>350</price>
+  </item>
+</drinks>

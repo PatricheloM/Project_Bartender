@@ -14,6 +14,11 @@ namespace Bartender_M9D47D
         {
             MessageBox.Show("Nem található a 'resources' mappa egyik eleme! A program egy helyettesítő képpel dolgozik tovább.", "Hiba", MessageBoxButtons.OK);
         }
+
+        public void onlyInt()
+        {
+            MessageBox.Show("Az 'Ár' mező csak számokat fogad el!", "Hiba", MessageBoxButtons.OK);
+        }
         
         public void saveThenExit(int exitCode)
         {

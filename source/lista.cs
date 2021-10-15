@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Bartender_M9D47D
 {
@@ -22,7 +24,7 @@ namespace Bartender_M9D47D
             InitializeComponent();
             try
             {
-                StreamReader sr = new StreamReader("resources\\_currentTable");
+                StreamReader sr = new StreamReader("resources/_currentTable");
                 currentTableString = sr.ReadToEnd();
                 sr.Close();
             }
@@ -30,7 +32,7 @@ namespace Bartender_M9D47D
             {
                 publicExceptionHandling.saveThenExit(1);
             }
-            currentTable.Text = currentTableString;
+            currentTable.Text = "Asztal: " + Convert.ToString(Convert.ToInt32(currentTableString.Substring(0, currentTableString.Length - 1)) + 1) + currentTableString.Substring(currentTableString.Length - 1, 1);
         }
     }
 }

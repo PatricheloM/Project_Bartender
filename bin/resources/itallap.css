@@ -1,0 +1,62 @@
+drinks::before
+{
+	content: "Aktuális italllap:";
+	font-size: xx-large;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+
+drinks 
+{
+	text-align: center;
+	padding: 2em;
+	border-radius: 25px;
+	border: 10px solid black;
+	border-style: double;
+	margin: 1% 18% 1% 18%;
+	color: black;
+	background: url(xmlBg.jpg) no-repeat center center fixed; 
+	background-size: cover;
+}
+
+item 
+{
+    display: block;
+	text-align: center;
+	margin-bottom: 0.5em;
+	border-radius: 25px;
+	border: 1px solid blue;
+	border-style: inset;
+	margin: 1% 1% 1% 1%;
+	color: blue;
+	background-color: ghostwhite;
+}
+
+price::before 
+{
+	content:" - ";
+}
+
+price::after 
+{
+	content:" Ft";
+}
+
+price
+{
+	font-style: italic;
+	font-size: large;
+}
+
+name
+{
+	font-size: x-large;
+}
+
+item:hover 
+{
+    background-color: #D5C7C4;
+    font-weight: bold;
+	border-color: red;
+	border-style: outset;
+}
