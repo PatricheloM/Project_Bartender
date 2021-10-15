@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE play SYSTEM "itallap.dtd"[]>
+<!DOCTYPE drinks SYSTEM "itallap.dtd"[]>
 <?xml-stylesheet type="text/css" href="itallap.css"?>
 <drinks>
   <item id="1">
