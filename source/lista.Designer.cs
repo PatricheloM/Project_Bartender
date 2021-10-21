@@ -29,25 +29,62 @@ namespace Bartender_M9D47D
         /// </summary>
         private void InitializeComponent()
         {
-            this.currentTable = new System.Windows.Forms.Label();
+            this.currentTableText = new System.Windows.Forms.Label();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // currentTable
+            // currentTableText
             // 
-            this.currentTable.AutoSize = true;
-            this.currentTable.Location = new System.Drawing.Point(13, 13);
-            this.currentTable.Name = "currentTable";
-            this.currentTable.Size = new System.Drawing.Size(35, 13);
-            this.currentTable.TabIndex = 0;
-            this.currentTable.Text = "currentTable";
+            this.currentTableText.AutoSize = true;
+            this.currentTableText.Location = new System.Drawing.Point(13, 13);
+            this.currentTableText.Name = "currentTableText";
+            this.currentTableText.Size = new System.Drawing.Size(67, 13);
+            this.currentTableText.TabIndex = 0;
+            this.currentTableText.Text = "currentTablePlaceholder";
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.name,
+            this.price,
+            this.invoice});
+            this.dataGridView.Location = new System.Drawing.Point(13, 30);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(385, 568);
+            this.dataGridView.TabIndex = 1;
+            this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_EditingControlShowing);
+            this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Tétel";
+            this.name.Name = "name";
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Ár";
+            this.price.Name = "price";
+            // 
+            // invoice
+            // 
+            this.invoice.HeaderText = "Számla";
+            this.invoice.Name = "invoice";
             // 
             // lista
             // 
             this.ClientSize = new System.Drawing.Size(410, 610);
-            this.Controls.Add(this.currentTable);
+            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.currentTableText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "lista";
             this.Text = "Lista";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -55,6 +92,10 @@ namespace Bartender_M9D47D
 
         #endregion
 
-        private System.Windows.Forms.Label currentTable;
+        private System.Windows.Forms.Label currentTableText;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoice;
     }
 }
