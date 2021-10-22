@@ -1,9 +1,12 @@
-# HLPL2_Project_Bartender
-Hight level programming languages 2 project repository - "Bartender"
+# HLPL2: Project - "Bartender"
+Hight Level Programming Languages 2: Project Repository - "Bartender"
 
 A software for pubs (and/or restaurant). Main focus is speed, compatibility, user friendliness, implementability.
-Feature plans: 
+
+Current Features:
+- Linux and Windows compatibility
 - Drag and drop table arrangement
+- XML based drink database
+- XML visualization with CSS
 - Invoice system
-- Drink database
 - TBA
