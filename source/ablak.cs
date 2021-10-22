@@ -18,13 +18,29 @@ namespace Bartender_M9D47D
 
         public int ScreenWidth()
         {
-            int width = Screen.PrimaryScreen.Bounds.Width;
-            return width;
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                int width = Screen.PrimaryScreen.Bounds.Width - 160;
+                return width;
+            }
+            else
+            {
+                int width = Screen.PrimaryScreen.Bounds.Width;
+                return width;
+            }
         }
         public int ScreenHeight()
         {
-            int height = Screen.PrimaryScreen.Bounds.Height;
-            return height;
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
+            {
+                int height = Screen.PrimaryScreen.Bounds.Height - 90;
+                return height;
+            }
+            else 
+            {
+                int height = Screen.PrimaryScreen.Bounds.Height;
+                return height;
+            }
         }
 
         List<PictureBox> tablesB = new List<PictureBox>();
