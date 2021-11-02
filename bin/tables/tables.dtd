@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT table (item*)>
+<!ATTLIST table x NMTOKEN #REQUIRED>
+<!ATTLIST table y NMTOKEN #REQUIRED>
+<!ELEMENT item (name, price, invoice)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT invoice (#PCDATA)>

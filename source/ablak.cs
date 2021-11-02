@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace Bartender_M9D47D
 {
@@ -55,6 +57,74 @@ namespace Bartender_M9D47D
 
         //initialize-------------------------------------------------------------------------------------------------
 
+        void checkSaveB()
+        {
+            string[] xmls = Directory.GetFiles("tables/", "*B.xml", SearchOption.TopDirectoryOnly);
+            int[] savedB = new int[xmls.Length];
+            for (int i = 0; i < xmls.Length; i++)
+            {
+                savedB[i] = i;
+                try
+                {
+                    File.Copy(xmls[i], "tables/table" + i + "B.xml");
+                    File.Delete(xmls[i]);
+                }
+                catch (Exception exception)
+                {
+                }
+                pluszB_Click(new object(), new EventArgs());
+                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "B.xml").Count())
+                {
+                    tablesB[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
+                }
+                else
+                {
+                    tablesB[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+                }
+
+                XmlDocument doc = new XmlDocument();
+                doc.Load("tables/table" + i + "B.xml");
+                XmlElement root = doc.DocumentElement;
+                int x = Convert.ToInt32(root.GetAttribute("x"));
+                int y = Convert.ToInt32(root.GetAttribute("y"));
+                tablesB[i].Location = new Point(x, y);
+            }
+        }
+
+        void checkSaveK()
+        {
+            string[] xmls = Directory.GetFiles("tables/", "*K.xml", SearchOption.TopDirectoryOnly);
+            int[] savedK = new int[xmls.Length];
+            for (int i = 0; i < xmls.Length; i++)
+            {
+                savedK[i] = i;
+                try
+                {
+                    File.Copy(xmls[i], "tables/table" + i + "K.xml");
+                    File.Delete(xmls[i]);
+                }
+                catch (Exception exception)
+                {
+                }
+                pluszK_Click(new object(), new EventArgs());
+                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "K.xml").Count())
+                {
+                    tablesK[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
+                }
+                else
+                {
+                    tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+                }
+
+                XmlDocument doc = new XmlDocument();
+                doc.Load("tables/table" + i + "K.xml");
+                XmlElement root = doc.DocumentElement;
+                int x = Convert.ToInt32(root.GetAttribute("x"));
+                int y = Convert.ToInt32(root.GetAttribute("y"));
+                tablesK[i].Location = new Point(x, y);
+            }
+        }
+
         public ablak()
         {
             InitializeComponent();
@@ -70,6 +140,8 @@ namespace Bartender_M9D47D
             this.groupBoxK.Size = new Size(ScreenWidth() / 3 - 10, ScreenHeight() - 80);
             this.belsoLabel.Location = new Point(55, 10);
             this.kulsoLabel.Location = new Point(55, 10);
+            checkSaveB();
+            checkSaveK();
 
         }
 
@@ -186,8 +258,8 @@ namespace Bartender_M9D47D
 
                 case MouseButtons.Right:
                     ContextMenu cm = new ContextMenu();
-                    //cm.MenuItems.Add("Asztal törlése", new EventHandler(PXHide));
-                    //cm.MenuItems.Add("Asztal ürítése", new EventHandler(PXFlush));
+                    //cm.MenuItems.Add("Asztal törlése", new EventHandler(PXBHide));
+                    cm.MenuItems.Add("Asztal ürítése", new EventHandler(PXBFlush));
                     tablesB[hoveredObject].ContextMenu = cm;
                     break;
             }
@@ -240,8 +312,8 @@ namespace Bartender_M9D47D
 
                 case MouseButtons.Right:
                     ContextMenu cm = new ContextMenu();
-                    //cm.MenuItems.Add("Asztal törlése", new EventHandler(PXHide));
-                    //cm.MenuItems.Add("Asztal ürítése", new EventHandler(PXFlush));
+                    //cm.MenuItems.Add("Asztal törlése", new EventHandler(PXKHide));
+                    cm.MenuItems.Add("Asztal ürítése", new EventHandler(PXKFlush));
                     tablesK[hoveredObject].ContextMenu = cm;
                     break;
             }
@@ -256,6 +328,20 @@ namespace Bartender_M9D47D
             sw.Close();
             lista lista = new lista();
             lista.ShowDialog();
+            if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "B.xml").Count())
+            {
+                tablesB[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
+            }
+            else
+            {
+                tablesB[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+            }
+            XmlDocument doc = new XmlDocument();
+            doc.Load("tables/table" + hoveredObject + "B.xml");
+            XmlElement root = doc.DocumentElement;
+            root.SetAttribute("x", tablesB[hoveredObject].Location.X.ToString());
+            root.SetAttribute("y", tablesB[hoveredObject].Location.Y.ToString());
+            doc.Save("tables/table" + hoveredObject + "B.xml");
         }
 
         private void newPXK_DoubleClick(object sender, EventArgs e)
@@ -265,6 +351,35 @@ namespace Bartender_M9D47D
             sw.Close();
             lista lista = new lista();
             lista.ShowDialog();
+            if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "K.xml").Count())
+            {
+                tablesK[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
+            }
+            else
+            {
+                tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+            }
+            XmlDocument doc = new XmlDocument();
+            doc.Load("tables/table" + hoveredObject + "K.xml");
+            XmlElement root = doc.DocumentElement;
+            root.SetAttribute("x", tablesK[hoveredObject].Location.X.ToString());
+            root.SetAttribute("y", tablesK[hoveredObject].Location.Y.ToString());
+            doc.Save("tables/table" + hoveredObject + "K.xml");
+        }
+
+        //table content menu------------------------------------------------------------------------
+
+        void PXBFlush(object sender, EventArgs e)
+        {
+            File.Delete("tables/table" + hoveredObject + "B.xml");
+            File.Copy("tables/_table.xml", "tables/table" + hoveredObject + "B.xml");
+            tablesB[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+        }
+        void PXKFlush(object sender, EventArgs e)
+        {
+            File.Delete("tables/table" + hoveredObject + "K.xml");
+            File.Copy("tables/_table.xml", "tables/table" + hoveredObject + "K.xml");
+            tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
         }
 
     }

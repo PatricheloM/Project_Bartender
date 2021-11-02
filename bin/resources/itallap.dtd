@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!ELEMENT drinks (item*)>
 <!ELEMENT item (name, price)>
+<!ATTLIST item id NMTOKEN #REQUIRED>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT price (#PCDATA)>

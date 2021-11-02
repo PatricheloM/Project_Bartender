@@ -19,6 +19,11 @@ namespace Bartender_M9D47D
         {
             MessageBox.Show("Az 'Ár' mező csak számokat fogad el!", "Hiba", MessageBoxButtons.OK);
         }
+
+        public void uniqueItem()
+        {
+            MessageBox.Show("Egyedi tétel. Árat külön kell megadni!", "Egyedi tétel", MessageBoxButtons.OK);
+        }
         
         public void saveThenExit(int exitCode)
         {
@@ -46,7 +51,7 @@ namespace Bartender_M9D47D
             
             //TBA
 
-            File.Delete("resources\\_currentTable");
+            File.Delete("resources/_currentTable");
             Application.Exit();
         }
     }

@@ -31,9 +31,9 @@ namespace Bartender_M9D47D
         {
             this.currentTableText = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,9 +50,9 @@ namespace Bartender_M9D47D
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.name,
-            this.price,
-            this.invoice});
+            this.nameColumn,
+            this.priceColumn,
+            this.invoiceColumn});
             this.dataGridView.Location = new System.Drawing.Point(13, 30);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(385, 568);
@@ -63,18 +63,20 @@ namespace Bartender_M9D47D
             // 
             // name
             // 
-            this.name.HeaderText = "Tétel";
-            this.name.Name = "name";
+            this.nameColumn.HeaderText = "Tétel";
+            this.nameColumn.Name = "name";
             // 
             // price
             // 
-            this.price.HeaderText = "Ár";
-            this.price.Name = "price";
+            this.priceColumn.HeaderText = "Ár";
+            this.priceColumn.Name = "price";
+            this.priceColumn.ReadOnly = true;
             // 
             // invoice
             // 
-            this.invoice.HeaderText = "Számla";
-            this.invoice.Name = "invoice";
+            this.invoiceColumn.HeaderText = "Számla";
+            this.invoiceColumn.Name = "invoice";
+            this.invoiceColumn.ReadOnly = true;
             // 
             // lista
             // 
@@ -87,6 +89,7 @@ namespace Bartender_M9D47D
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.lista_FormClosing);
 
         }
 
@@ -94,8 +97,8 @@ namespace Bartender_M9D47D
 
         private System.Windows.Forms.Label currentTableText;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn invoice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceColumn;
     }
 }

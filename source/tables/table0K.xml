@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE table SYSTEM "tables.dtd"[]>
+<?xml-stylesheet type="text/css" href="tables.css"?>
+<table x="142" y="184">
+  <item>
+    <name>Heineken</name>
+    <price>450</price>
+    <invoice>Patrik</invoice>
+  </item>
+  <item>
+    <name>Víz</name>
+    <price>250</price>
+    <invoice>Péter</invoice>
+  </item>
+  <item>
+    <name>Red Bull</name>
+    <price>500</price>
+    <invoice>János</invoice>
+  </item>
+  <item>
+    <name>nachos</name>
+    <price>250</price>
+    <invoice>János</invoice>
+  </item>
+</table>

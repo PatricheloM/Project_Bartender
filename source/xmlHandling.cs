@@ -73,7 +73,6 @@ namespace Bartender_M9D47D
         {
             try 
             {
-                Console.WriteLine(removeAt);
                 XmlDocument doc = new XmlDocument();
                 doc.Load("resources/itallap.xml");
 
