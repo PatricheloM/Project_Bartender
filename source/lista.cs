@@ -60,14 +60,7 @@ namespace Bartender_M9D47D
                 publicExceptionHandling.saveThenExit(1);
             }
             currentTableText.Text = "Asztal: " + Convert.ToString(currentTable()) + Convert.ToString(side());
-            if (!File.Exists("tables/table" + currentTableString + ".xml"))
-            {
-                File.Copy("tables/_table.xml", "tables/table" + currentTableString + ".xml");
-            }
-            else
-            {
-                gridCloner();
-            }
+            gridCloner();
         }
 
         //dataGrid-------------------------------------------------------------------------------------------------
@@ -165,7 +158,7 @@ namespace Bartender_M9D47D
             }
             catch (FileNotFoundException)
             {
-                publicExceptionHandling.saveThenExit(1);
+                publicExceptionHandling.saveThenExit(2);
             }
         }
 
@@ -211,7 +204,7 @@ namespace Bartender_M9D47D
             }
             catch (FileNotFoundException)
             {
-                publicExceptionHandling.saveThenExit(1);
+                publicExceptionHandling.saveThenExit(2);
             }
         }
 

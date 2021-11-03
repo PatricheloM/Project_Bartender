@@ -154,7 +154,10 @@ namespace Bartender_M9D47D
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            publicExceptionHandling.saveThenExit(0);
+            if (MessageBox.Show("Biztos be akarod zárni az ablakot?", "Bezárás", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                publicExceptionHandling.saveThenExit(0);
+            }
         }
 
         private void itallapButton_Click(object sender, EventArgs e)
@@ -185,6 +188,10 @@ namespace Bartender_M9D47D
             newPXB.MouseDown += new MouseEventHandler(this.newPXB_MouseDown);
             newPXB.MouseMove += new MouseEventHandler(this.newPXB_MouseMove);
             newPXB.MouseUp += new MouseEventHandler(this.newPXB_MouseUp);
+            if (!File.Exists("tables/table" + (tablesB.Count - 1) + "B.xml"))
+            {
+                File.Copy("tables/_table.xml", "tables/table" + (tablesB.Count - 1) + "B.xml");
+            }
 
         }
 
@@ -208,6 +215,10 @@ namespace Bartender_M9D47D
             newPXK.MouseDown += new MouseEventHandler(this.newPXK_MouseDown);
             newPXK.MouseMove += new MouseEventHandler(this.newPXK_MouseMove);
             newPXK.MouseUp += new MouseEventHandler(this.newPXK_MouseUp);
+            if (!File.Exists("tables/table" + (tablesK.Count - 1) + "K.xml"))
+            {
+                File.Copy("tables/_table.xml", "tables/table" + (tablesK.Count - 1) + "K.xml");
+            }
 
         }
 
@@ -244,6 +255,12 @@ namespace Bartender_M9D47D
         private void newPXB_MouseUp(object sender, MouseEventArgs e)
         {
             picutreGrabbed = false;
+            XmlDocument doc = new XmlDocument();
+            doc.Load("tables/table" + hoveredObject + "B.xml");
+            XmlElement root = doc.DocumentElement;
+            root.SetAttribute("x", tablesB[hoveredObject].Location.X.ToString());
+            root.SetAttribute("y", tablesB[hoveredObject].Location.Y.ToString());
+            doc.Save("tables/table" + hoveredObject + "B.xml");
         }
 
         private void newPXB_MouseDown(object sender, MouseEventArgs e)
@@ -258,7 +275,7 @@ namespace Bartender_M9D47D
 
                 case MouseButtons.Right:
                     ContextMenu cm = new ContextMenu();
-                    //cm.MenuItems.Add("Asztal törlése", new EventHandler(PXBHide));
+                    cm.MenuItems.Add("Asztal törlése", new EventHandler(PXBHide));
                     cm.MenuItems.Add("Asztal ürítése", new EventHandler(PXBFlush));
                     tablesB[hoveredObject].ContextMenu = cm;
                     break;
@@ -298,6 +315,12 @@ namespace Bartender_M9D47D
         private void newPXK_MouseUp(object sender, MouseEventArgs e)
         {
             picutreGrabbed = false;
+            XmlDocument doc = new XmlDocument();
+            doc.Load("tables/table" + hoveredObject + "K.xml");
+            XmlElement root = doc.DocumentElement;
+            root.SetAttribute("x", tablesK[hoveredObject].Location.X.ToString());
+            root.SetAttribute("y", tablesK[hoveredObject].Location.Y.ToString());
+            doc.Save("tables/table" + hoveredObject + "K.xml");
         }
 
         private void newPXK_MouseDown(object sender, MouseEventArgs e)
@@ -312,7 +335,7 @@ namespace Bartender_M9D47D
 
                 case MouseButtons.Right:
                     ContextMenu cm = new ContextMenu();
-                    //cm.MenuItems.Add("Asztal törlése", new EventHandler(PXKHide));
+                    cm.MenuItems.Add("Asztal törlése", new EventHandler(PXKHide));
                     cm.MenuItems.Add("Asztal ürítése", new EventHandler(PXKFlush));
                     tablesK[hoveredObject].ContextMenu = cm;
                     break;
@@ -336,12 +359,6 @@ namespace Bartender_M9D47D
             {
                 tablesB[hoveredObject].Image = Image.FromFile("resources/szabad.png");
             }
-            XmlDocument doc = new XmlDocument();
-            doc.Load("tables/table" + hoveredObject + "B.xml");
-            XmlElement root = doc.DocumentElement;
-            root.SetAttribute("x", tablesB[hoveredObject].Location.X.ToString());
-            root.SetAttribute("y", tablesB[hoveredObject].Location.Y.ToString());
-            doc.Save("tables/table" + hoveredObject + "B.xml");
         }
 
         private void newPXK_DoubleClick(object sender, EventArgs e)
@@ -359,12 +376,6 @@ namespace Bartender_M9D47D
             {
                 tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
             }
-            XmlDocument doc = new XmlDocument();
-            doc.Load("tables/table" + hoveredObject + "K.xml");
-            XmlElement root = doc.DocumentElement;
-            root.SetAttribute("x", tablesK[hoveredObject].Location.X.ToString());
-            root.SetAttribute("y", tablesK[hoveredObject].Location.Y.ToString());
-            doc.Save("tables/table" + hoveredObject + "K.xml");
         }
 
         //table content menu------------------------------------------------------------------------
@@ -380,6 +391,18 @@ namespace Bartender_M9D47D
             File.Delete("tables/table" + hoveredObject + "K.xml");
             File.Copy("tables/_table.xml", "tables/table" + hoveredObject + "K.xml");
             tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+        }
+
+        void PXBHide(object sender, EventArgs e)
+        {
+            File.Delete("tables/table" + hoveredObject + "B.xml");
+            tablesB[hoveredObject].Hide();
+        }
+
+        void PXKHide(object sender, EventArgs e)
+        {
+            File.Delete("tables/table" + hoveredObject + "K.xml");
+            tablesK[hoveredObject].Hide();
         }
 
     }

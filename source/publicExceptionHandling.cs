@@ -37,7 +37,7 @@ namespace Bartender_M9D47D
                     break;
 
                 case 2:
-                    //TBA
+                    MessageBox.Show("Nem található a 'tables' mappa egyik eleme! Kérem indítsa újra a programot. Az asztalokon lévő számlák elvesztek.", "Kritikus hiba", MessageBoxButtons.OK);
                     break;
 
                 case 3:
@@ -48,8 +48,6 @@ namespace Bartender_M9D47D
                     MessageBox.Show("Ismeretlen hiba történt. Kérem indítsa újra az alkalmazást. Az asztalokon lévő számlák nem fognak elveszni.", "Ismeretlen hiba", MessageBoxButtons.OK);
                     break;
             }
-            
-            //TBA
 
             File.Delete("resources/_currentTable");
             Application.Exit();
