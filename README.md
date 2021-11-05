@@ -7,6 +7,6 @@ Current Features:
 - Linux and Windows compatibility
 - Drag and drop table arrangement
 - XML based drink database
-- XML visualization with CSS
-- Invoice system
+- XML based invoice system
+- Web interface
 - TBA
