@@ -23,6 +23,13 @@ namespace Bartender_M9D47D
         public List<int> price = new List<int>();
         private int itallapCount = 0;
 
+        string foundIn = null;
+
+        public string getFoundXml()
+        {
+            return foundIn;
+        }
+
         public int getItallapCount()
         {
             return itallapCount;
@@ -149,5 +156,139 @@ namespace Bartender_M9D47D
                 publicExceptionHandling.saveThenExit(1);
             }
         }
+
+        public List<string> searchInvoicesB()
+        {
+            string[] xmlsB = Directory.GetFiles("tables/", "*B.xml", SearchOption.TopDirectoryOnly);
+
+            List<string> invoicesB = new List<string>();
+
+            foreach (var xml in xmlsB)
+            {
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.DtdProcessing = DtdProcessing.Parse;
+                settings.MaxCharactersFromEntities = 1024;
+
+                using (XmlReader reader = XmlReader.Create(xml, settings))
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.IsStartElement())
+                        {
+                            switch (reader.Name.ToString())
+                            {
+                                case "invoice":
+                                    invoicesB.Add(reader.ReadString());
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return invoicesB;
+        }
+
+        public List<string> searchInvoicesK()
+        {
+            string[] xmlsK = Directory.GetFiles("tables/", "*K.xml", SearchOption.TopDirectoryOnly);
+
+            List<string> invoicesK = new List<string>();
+
+            foreach (var xml in xmlsK)
+            {
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.DtdProcessing = DtdProcessing.Parse;
+                settings.MaxCharactersFromEntities = 1024;
+
+                using (XmlReader reader = XmlReader.Create(xml, settings))
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.IsStartElement())
+                        {
+                            switch (reader.Name.ToString())
+                            {
+                                case "invoice":
+                                    invoicesK.Add(reader.ReadString());
+                                    break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return invoicesK;
+        }
+
+        public string[,] searchInvoiceFor(string invoice)
+        {
+            List<string> B = searchInvoicesB();
+            List<string> K = searchInvoicesK();
+
+            int countB = B.Count(s => invoice.Contains(s));
+            int countK = K.Count(s => invoice.Contains(s));
+            int count = countB + countK;
+
+            string[,] invoiceArray = new string[count, 2];
+
+            string[] xmls = Directory.GetFiles("tables/", "*.xml", SearchOption.TopDirectoryOnly);
+
+            foreach (var xml in xmls)
+            {
+                foreach (var line in File.ReadAllLines(xml))
+                {
+                    if (line.Contains("<invoice>" + invoice + "</invoice>"))
+                    {
+                        foundIn = xml;
+                        break;
+                    }
+                }
+            }
+
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.DtdProcessing = DtdProcessing.Parse;
+            settings.MaxCharactersFromEntities = 1024;
+
+            List<string> _0 = new List<string>();
+            List<string> _1 = new List<string>();
+            List<string> _2 = new List<string>();
+
+
+            using (XmlReader reader = XmlReader.Create(foundIn, settings))
+            {
+                while (reader.Read())
+                {
+                    if (reader.IsStartElement())
+                    {
+                        switch (reader.Name.ToString())
+                        {
+                            case "name":
+                                _0.Add(reader.ReadString().ToUpper());
+                                break;
+                            case "price":
+                                _1.Add(reader.ReadString());
+                                break;
+                            case "invoice":
+                                _2.Add(reader.ReadString());
+                                break;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < _2.Count(); i++)
+            {
+                if (_2[i] == invoice)
+                {
+                    invoiceArray[count - 1, 0] = _0[i];
+                    invoiceArray[count - 1, 1] = _1[i];
+                    count--;
+                }
+            }
+
+            return invoiceArray;
+        }
+
     }
 }

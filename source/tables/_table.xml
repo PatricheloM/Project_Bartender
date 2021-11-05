@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE table SYSTEM "tables.dtd"[]>
 <?xml-stylesheet type="text/css" href="tables.css"?>
-<table x="50" y="50">
-</table>
+<table x="50" y="50" />

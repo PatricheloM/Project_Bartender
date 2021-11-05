@@ -41,8 +41,15 @@ namespace Bartender_M9D47D
         {
             try
             {
-                xmlHandling.xmlAdd(Convert.ToString(xmlHandling.getItallapCount() + 1), nameBox.Text, Convert.ToInt32(price.Text));
-                this.Close();
+                if (nameBox.Text == null || nameBox.Text == "" || string.IsNullOrWhiteSpace(nameBox.Text))
+                {
+                    publicExceptionHandling.emptyInput();
+                }
+                else
+                {
+                    xmlHandling.xmlAdd(Convert.ToString(xmlHandling.getItallapCount() + 1), nameBox.Text, Convert.ToInt32(price.Text));
+                    this.Close();
+                }
             }
             catch (FormatException)
             {

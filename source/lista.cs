@@ -120,6 +120,46 @@ namespace Bartender_M9D47D
                     }
                 }
             }
+
+            if (e.ColumnIndex == 1)
+            {
+                if (!int.TryParse(dataGridView[1, dataGridView.Rows[e.RowIndex].Index].Value.ToString(), out _))
+                {
+                    publicExceptionHandling.onlyInt();
+                    dataGridView[1, dataGridView.Rows[e.RowIndex].Index].Value = "";
+                }
+                else
+                {
+                    dataGridView.Rows[dataGridView.Rows[e.RowIndex].Index].Cells[1].ReadOnly = true;
+                }
+            }
+
+            if (e.ColumnIndex == 2)
+            {
+                string[] xmls = Directory.GetFiles("tables/", "*.xml", SearchOption.TopDirectoryOnly);
+
+                foreach (var xml in xmls)
+                {
+                    foreach (var line in File.ReadAllLines(xml))
+                    {
+                        if (line.Contains("<invoice>" + dataGridView[2, dataGridView.Rows[e.RowIndex].Index].Value.ToString().ToUpper() + "</invoice>"))
+                        {
+                            string foundIn = xml;
+                            if (foundIn != "tables/table" + currentTableString + ".xml")
+                            {
+                                publicExceptionHandling.invoiceExists(foundIn);
+                                dataGridView[2, dataGridView.Rows[e.RowIndex].Index].Value = "";
+                            }
+                            else
+                            {
+                                dataGridView.Rows[dataGridView.Rows[e.RowIndex].Index].Cells[2].ReadOnly = true;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+
         }
 
         //xml handling---------------------------------------------------------------------------
@@ -188,7 +228,7 @@ namespace Bartender_M9D47D
                     elem.AppendChild(doc.CreateElement("name"));
                     elem.AppendChild(doc.CreateElement("price"));
                     elem.AppendChild(doc.CreateElement("invoice"));
-                    elem.ChildNodes[0].InnerText = dataGridView.Rows[i].Cells[0].Value.ToString();
+                    elem.ChildNodes[0].InnerText = dataGridView.Rows[i].Cells[0].Value.ToString().ToUpper();
                     try
                     {
                         elem.ChildNodes[1].InnerText = dataGridView.Rows[i].Cells[1].Value.ToString();
@@ -197,7 +237,7 @@ namespace Bartender_M9D47D
                     {
                         elem.ChildNodes[1].InnerText = Convert.ToString(0);
                     }
-                    elem.ChildNodes[2].InnerText = dataGridView.Rows[i].Cells[2].Value.ToString();
+                    elem.ChildNodes[2].InnerText = dataGridView.Rows[i].Cells[2].Value.ToString().ToUpper();
                     root.AppendChild(elem);
                     doc.Save("tables/table" + currentTableString + ".xml");
                 }
@@ -208,25 +248,51 @@ namespace Bartender_M9D47D
             }
         }
 
+        //ATTENTION: UGLY CODE AHEAD
         private void lista_FormClosing(object sender, FormClosingEventArgs e)
         {
             for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
             {
-                if (dataGridView.Rows[i].Cells[1].Value == null)
+                if (dataGridView.Rows[i].Cells[0].Value == null || dataGridView.Rows[i].Cells[0].Value.ToString() == "" || string.IsNullOrWhiteSpace(dataGridView.Rows[i].Cells[0].Value.ToString()))
                 {
-                    dataGridView.Rows[i].Cells[1].Value = Convert.ToString(0);
+                    publicExceptionHandling.emptyInput();
+                    e.Cancel = true;
+                    break;
                 }
-            }
 
-            for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
-            {
-                if (dataGridView.Rows[i].Cells[2].Value == null)
+                if (i == dataGridView.Rows.Count - 2)
                 {
-                    dataGridView.Rows[i].Cells[2].Value = "Asztal: " + currentTableString;
+                    for (int j = 0; j < dataGridView.Rows.Count - 1; j++)
+                    {
+                        if (dataGridView.Rows[j].Cells[1].Value == null || dataGridView.Rows[j].Cells[1].Value.ToString() == "" || string.IsNullOrWhiteSpace(dataGridView.Rows[j].Cells[1].Value.ToString()))
+                        {
+                            publicExceptionHandling.emptyInput();
+                            e.Cancel = true;
+                            break;
+                        }
+
+                        if (j == dataGridView.Rows.Count - 2)
+                        {
+                            for (int k = 0; k < dataGridView.Rows.Count - 1; k++)
+                            {
+                                if (dataGridView.Rows[k].Cells[2].Value == null || dataGridView.Rows[k].Cells[2].Value.ToString() == "" || string.IsNullOrWhiteSpace(dataGridView.Rows[k].Cells[2].Value.ToString()))
+                                {
+                                    publicExceptionHandling.emptyInput();
+                                    e.Cancel = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    if (k == dataGridView.Rows.Count - 2)
+                                    {
+                                        saveXml();
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            saveXml();
         }
-
     }
 }

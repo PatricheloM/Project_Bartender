@@ -74,7 +74,7 @@
             this.priceLabel.TabIndex = 3;
             this.priceLabel.Text = "Ár (Ft)";
             // 
-            // textBox1
+            // nameBox
             // 
             this.nameBox.Location = new System.Drawing.Point(83, 10);
             this.nameBox.Name = "textBox1";
@@ -82,7 +82,7 @@
             this.nameBox.TabIndex = 4;
             this.nameBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyUp);
             // 
-            // textBox2
+            // price
             // 
             this.price.Location = new System.Drawing.Point(83, 45);
             this.price.Name = "textBox2";

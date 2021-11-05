@@ -42,12 +42,13 @@ namespace Bartender_M9D47D
             this.currentTableText.AutoSize = true;
             this.currentTableText.Location = new System.Drawing.Point(13, 13);
             this.currentTableText.Name = "currentTableText";
-            this.currentTableText.Size = new System.Drawing.Size(67, 13);
+            this.currentTableText.Size = new System.Drawing.Size(123, 13);
             this.currentTableText.TabIndex = 0;
             this.currentTableText.Text = "currentTablePlaceholder";
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameColumn,
@@ -55,27 +56,27 @@ namespace Bartender_M9D47D
             this.invoiceColumn});
             this.dataGridView.Location = new System.Drawing.Point(13, 30);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView.Size = new System.Drawing.Size(385, 568);
             this.dataGridView.TabIndex = 1;
-            this.dataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_EditingControlShowing);
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellEndEdit);
+            this.dataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView_EditingControlShowing);
             // 
-            // name
+            // nameColumn
             // 
             this.nameColumn.HeaderText = "Tétel";
-            this.nameColumn.Name = "name";
+            this.nameColumn.Name = "nameColumn";
             // 
-            // price
+            // priceColumn
             // 
             this.priceColumn.HeaderText = "Ár";
-            this.priceColumn.Name = "price";
+            this.priceColumn.Name = "priceColumn";
             this.priceColumn.ReadOnly = true;
             // 
-            // invoice
+            // invoiceColumn
             // 
             this.invoiceColumn.HeaderText = "Számla";
-            this.invoiceColumn.Name = "invoice";
+            this.invoiceColumn.Name = "invoiceColumn";
             this.invoiceColumn.ReadOnly = true;
             // 
             // lista
@@ -86,10 +87,10 @@ namespace Bartender_M9D47D
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "lista";
             this.Text = "Lista";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.lista_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.lista_FormClosing);
 
         }
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>Itallap</title>
+    <link rel="icon" href="beer.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="itallap.css"/>
+	<script src="script.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<h1 id="h1">Aktuális itallap:</h1>
+	<button id="hide" onclick="load(text);">Belépés</button>
+    <button style="display: none;" id="addPage" onclick="openAdd();">Tétel hozzáadás</button>
+	<input style="display: none;" type="text" id="nameAdd" name="nameAdd">
+	<input style="display: none;" type="text" id="priceAdd" name="priceAdd">
+	<button style="display: none;" id="add" onclick="add();">Hozzáadás</button>
+	<table class="center" id="table"/>
+</body>
+</html>

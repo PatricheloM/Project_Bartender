@@ -33,6 +33,7 @@ namespace Bartender_M9D47D
             this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addItem = new System.Windows.Forms.Button();
+            this.openInBrowser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,16 +73,28 @@ namespace Bartender_M9D47D
             // 
             this.addItem.Location = new System.Drawing.Point(13, 439);
             this.addItem.Name = "addItem";
-            this.addItem.Size = new System.Drawing.Size(576, 28);
+            this.addItem.Size = new System.Drawing.Size(432, 28);
             this.addItem.TabIndex = 1;
             this.addItem.Text = "Tétel hozzáadása";
             this.addItem.UseVisualStyleBackColor = true;
             this.addItem.Click += new System.EventHandler(this.addItem_Click);
             // 
+            // openInBrowser
+            // 
+            this.openInBrowser.Location = new System.Drawing.Point(451, 439);
+            this.openInBrowser.Name = "openInBrowser";
+            this.openInBrowser.Size = new System.Drawing.Size(138, 28);
+            this.openInBrowser.TabIndex = 2;
+            this.openInBrowser.Text = "Weboldal nézet";
+            this.openInBrowser.UseVisualStyleBackColor = true;
+            this.openInBrowser.Click += new System.EventHandler(this.openInBrowser_Click);
+            // 
             // itallap
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 479);
+            this.Controls.Add(this.openInBrowser);
             this.Controls.Add(this.addItem);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -99,5 +112,6 @@ namespace Bartender_M9D47D
         private System.Windows.Forms.DataGridViewTextBoxColumn item;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.Button addItem;
+        private System.Windows.Forms.Button openInBrowser;
     }
 }

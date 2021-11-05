@@ -24,7 +24,17 @@ namespace Bartender_M9D47D
         {
             MessageBox.Show("Egyedi tétel. Árat külön kell megadni!", "Egyedi tétel", MessageBoxButtons.OK);
         }
-        
+
+        public void invoiceExists(string table)
+        {
+            MessageBox.Show("Ez a számla már egy másik asztalon létezik! (" + table.Substring(12, table.Length - 16) + ")", "Létező számla", MessageBoxButtons.OK);
+        }
+
+        public void emptyInput()
+        {
+            MessageBox.Show("Üresen hagyott mező!", "Üres mező", MessageBoxButtons.OK);
+        }
+
         public void saveThenExit(int exitCode)
         {
             switch (exitCode)

@@ -48,6 +48,9 @@ namespace Bartender_M9D47D
         List<PictureBox> tablesB = new List<PictureBox>();
         List<PictureBox> tablesK = new List<PictureBox>();
 
+        List<Label> tablesBLabel = new List<Label>();
+        List<Label> tablesKLabel = new List<Label>();
+
         bool picutreGrabbed;
         int deltaX;
         int deltaY;
@@ -73,13 +76,13 @@ namespace Bartender_M9D47D
                 {
                 }
                 pluszB_Click(new object(), new EventArgs());
-                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "B.xml").Count())
+                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + i + "B.xml").Count())
                 {
-                    tablesB[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
+                    tablesB[i].Image = Image.FromFile("resources/foglalt.png");
                 }
                 else
                 {
-                    tablesB[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+                    tablesB[i].Image = Image.FromFile("resources/szabad.png");
                 }
 
                 XmlDocument doc = new XmlDocument();
@@ -107,13 +110,13 @@ namespace Bartender_M9D47D
                 {
                 }
                 pluszK_Click(new object(), new EventArgs());
-                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "K.xml").Count())
+                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + i + "K.xml").Count())
                 {
-                    tablesK[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
+                    tablesK[i].Image = Image.FromFile("resources/foglalt.png");
                 }
                 else
                 {
-                    tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+                    tablesK[i].Image = Image.FromFile("resources/szabad.png");
                 }
 
                 XmlDocument doc = new XmlDocument();
@@ -132,6 +135,7 @@ namespace Bartender_M9D47D
             this.exitButton.Location = new Point(ScreenWidth() - 55, 5);
             this.minimizeButton.Location = new Point(ScreenWidth() - 110, 5);
             this.itallapButton.Location = new Point(ScreenWidth() - 225, 5);
+            this.kifizetesButton.Location = new Point(ScreenWidth() - 355, 5);
             this.pluszK.Location = new Point((ScreenWidth() / 3) * 2 - 5, 60);
             this.pluszB.Location = new Point(5, 60);
             this.groupBoxB.Location = new Point(10, 60);
@@ -166,6 +170,42 @@ namespace Bartender_M9D47D
             itallap.ShowDialog();
         }
 
+        private void kifizetesButton_Click(object sender, EventArgs e)
+        {
+            kifizetes kifizetes = new kifizetes();
+            kifizetes.ShowDialog();
+
+            try
+            {
+                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "B.xml").Count())
+                {
+                    tablesB[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
+                }
+                else
+                {
+                    tablesB[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+                }
+            }
+            catch (Exception exception)
+            {
+            }
+
+            try
+            {
+                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "K.xml").Count())
+                {
+                    tablesK[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
+                }
+                else
+                {
+                    tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+                }
+            }
+            catch (Exception exception)
+            { 
+            }
+        }
+
         //dynamic table creation--------------------------------------------------------------------------------------
 
         private void pluszB_Click(object sender, EventArgs e)
@@ -173,6 +213,13 @@ namespace Bartender_M9D47D
             PictureBox newPXB = new PictureBox();
             tablesB.Add(newPXB);
             this.groupBoxB.Controls.Add(newPXB);
+            Label newLB = new Label();
+            tablesBLabel.Add(newLB);
+            newPXB.Controls.Add(newLB);
+            newLB.Text = (tablesB.Count - 1) + "B";
+            newLB.BackColor = Color.Transparent;
+            newLB.Location = new Point(10, 10);
+            newLB.Font = new Font("Arial", 12, FontStyle.Bold);
             try
             {
                 newPXB.Image = Image.FromFile("resources/szabad.png");
@@ -200,6 +247,13 @@ namespace Bartender_M9D47D
             PictureBox newPXK = new PictureBox();
             tablesK.Add(newPXK);
             this.groupBoxK.Controls.Add(newPXK);
+            Label newLK = new Label();
+            tablesBLabel.Add(newLK);
+            newPXK.Controls.Add(newLK);
+            newLK.Text = (tablesK.Count - 1) + "K";
+            newLK.BackColor = Color.Transparent;
+            newLK.Location = new Point(10, 10);
+            newLK.Font = new Font("Arial", 12, FontStyle.Bold);
             try
             {
                 newPXK.Image = Image.FromFile("resources/szabad.png");
@@ -385,12 +439,26 @@ namespace Bartender_M9D47D
             File.Delete("tables/table" + hoveredObject + "B.xml");
             File.Copy("tables/_table.xml", "tables/table" + hoveredObject + "B.xml");
             tablesB[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("tables/table" + hoveredObject + "B.xml");
+            XmlElement root = doc.DocumentElement;
+            root.SetAttribute("x", tablesB[hoveredObject].Location.X.ToString());
+            root.SetAttribute("y", tablesB[hoveredObject].Location.Y.ToString());
+            doc.Save("tables/table" + hoveredObject + "B.xml");
         }
         void PXKFlush(object sender, EventArgs e)
         {
             File.Delete("tables/table" + hoveredObject + "K.xml");
             File.Copy("tables/_table.xml", "tables/table" + hoveredObject + "K.xml");
             tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("tables/table" + hoveredObject + "K.xml");
+            XmlElement root = doc.DocumentElement;
+            root.SetAttribute("x", tablesK[hoveredObject].Location.X.ToString());
+            root.SetAttribute("y", tablesK[hoveredObject].Location.Y.ToString());
+            doc.Save("tables/table" + hoveredObject + "K.xml");
         }
 
         void PXBHide(object sender, EventArgs e)

@@ -39,12 +39,14 @@ namespace Bartender_M9D47D
             this.belsoLabel = new System.Windows.Forms.Label();
             this.minimizeButton = new System.Windows.Forms.Button();
             this.itallapButton = new System.Windows.Forms.Button();
+            this.kifizetesButton = new System.Windows.Forms.Button();
             this.groupBoxK.SuspendLayout();
             this.groupBoxB.SuspendLayout();
             this.SuspendLayout();
             // 
             // pluszK
             // 
+            this.pluszK.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F);
             this.pluszK.Location = new System.Drawing.Point(1095, 60);
             this.pluszK.Name = "pluszK";
             this.pluszK.Size = new System.Drawing.Size(50, 50);
@@ -52,10 +54,10 @@ namespace Bartender_M9D47D
             this.pluszK.Text = "+";
             this.pluszK.UseVisualStyleBackColor = true;
             this.pluszK.Click += new System.EventHandler(this.pluszK_Click);
-            this.pluszK.Font = new System.Drawing.Font("Microsoft Sans Serif", 32, System.Drawing.FontStyle.Regular);
             // 
             // pluszB
             // 
+            this.pluszB.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F);
             this.pluszB.Location = new System.Drawing.Point(5, 60);
             this.pluszB.Name = "pluszB";
             this.pluszB.Size = new System.Drawing.Size(50, 50);
@@ -63,10 +65,10 @@ namespace Bartender_M9D47D
             this.pluszB.Text = "+";
             this.pluszB.UseVisualStyleBackColor = true;
             this.pluszB.Click += new System.EventHandler(this.pluszB_Click);
-            this.pluszB.Font = new System.Drawing.Font("Microsoft Sans Serif", 32, System.Drawing.FontStyle.Regular);
             // 
             // exitButton
             // 
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold);
             this.exitButton.Location = new System.Drawing.Point(1095, 5);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(50, 50);
@@ -74,12 +76,10 @@ namespace Bartender_M9D47D
             this.exitButton.Text = "X";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 32, System.Drawing.FontStyle.Bold);
             // 
             // groupBoxK
             // 
             this.groupBoxK.Controls.Add(this.kulsoLabel);
-            this.groupBoxB.Controls.Add(this.pluszK);
             this.groupBoxK.Location = new System.Drawing.Point(750, 60);
             this.groupBoxK.Name = "groupBoxK";
             this.groupBoxK.Size = new System.Drawing.Size(388, 568);
@@ -89,17 +89,16 @@ namespace Bartender_M9D47D
             // kulsoLabel
             // 
             this.kulsoLabel.AutoSize = true;
+            this.kulsoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.kulsoLabel.Location = new System.Drawing.Point(284, 0);
             this.kulsoLabel.Name = "kulsoLabel";
-            this.kulsoLabel.Size = new System.Drawing.Size(55, 13);
+            this.kulsoLabel.Size = new System.Drawing.Size(135, 29);
             this.kulsoLabel.TabIndex = 0;
             this.kulsoLabel.Text = "Külső rész";
-            this.kulsoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18, System.Drawing.FontStyle.Bold);
             // 
             // groupBoxB
             // 
             this.groupBoxB.Controls.Add(this.belsoLabel);
-            this.groupBoxB.Controls.Add(this.pluszB);
             this.groupBoxB.Location = new System.Drawing.Point(10, 60);
             this.groupBoxB.Name = "groupBoxB";
             this.groupBoxB.Size = new System.Drawing.Size(734, 568);
@@ -109,15 +108,16 @@ namespace Bartender_M9D47D
             // belsoLabel
             // 
             this.belsoLabel.AutoSize = true;
+            this.belsoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.belsoLabel.Location = new System.Drawing.Point(52, 0);
             this.belsoLabel.Name = "belsoLabel";
-            this.belsoLabel.Size = new System.Drawing.Size(55, 13);
+            this.belsoLabel.Size = new System.Drawing.Size(136, 29);
             this.belsoLabel.TabIndex = 0;
             this.belsoLabel.Text = "Belső rész";
-            this.belsoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18, System.Drawing.FontStyle.Bold);
             // 
             // minimizeButton
             // 
+            this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Bold);
             this.minimizeButton.Location = new System.Drawing.Point(1040, 5);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(50, 50);
@@ -125,10 +125,10 @@ namespace Bartender_M9D47D
             this.minimizeButton.Text = "_";
             this.minimizeButton.UseVisualStyleBackColor = true;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
-            this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 28, System.Drawing.FontStyle.Bold);
             // 
             // itallapButton
             // 
+            this.itallapButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
             this.itallapButton.Location = new System.Drawing.Point(924, 5);
             this.itallapButton.Name = "itallapButton";
             this.itallapButton.Size = new System.Drawing.Size(110, 50);
@@ -136,11 +136,22 @@ namespace Bartender_M9D47D
             this.itallapButton.Text = "Itallap";
             this.itallapButton.UseVisualStyleBackColor = true;
             this.itallapButton.Click += new System.EventHandler(this.itallapButton_Click);
-            this.itallapButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18, System.Drawing.FontStyle.Bold);
+            // 
+            // kifizetesButton
+            // 
+            this.kifizetesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.kifizetesButton.Location = new System.Drawing.Point(793, 5);
+            this.kifizetesButton.Name = "kifizetesButton";
+            this.kifizetesButton.Size = new System.Drawing.Size(125, 50);
+            this.kifizetesButton.TabIndex = 3;
+            this.kifizetesButton.Text = "Kifizetés";
+            this.kifizetesButton.UseVisualStyleBackColor = true;
+            this.kifizetesButton.Click += new System.EventHandler(this.kifizetesButton_Click);
             // 
             // ablak
             // 
             this.ClientSize = new System.Drawing.Size(1150, 640);
+            this.Controls.Add(this.kifizetesButton);
             this.Controls.Add(this.itallapButton);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exitButton);
@@ -149,7 +160,7 @@ namespace Bartender_M9D47D
             this.Controls.Add(this.groupBoxB);
             this.Controls.Add(this.groupBoxK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); // <----- comment out this line to compile with mono
+            //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon"))); // <----- comment out this line to compile with mono
             this.Name = "ablak";
             this.Text = "Bartender";
             this.groupBoxK.ResumeLayout(false);
@@ -171,6 +182,7 @@ namespace Bartender_M9D47D
         private System.Windows.Forms.Button itallapButton;
         private System.Windows.Forms.Label belsoLabel;
         private System.Windows.Forms.Label kulsoLabel;
+        private System.Windows.Forms.Button kifizetesButton;
     }
 }
 
