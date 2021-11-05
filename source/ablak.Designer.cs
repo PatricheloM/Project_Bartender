@@ -40,6 +40,7 @@ namespace Bartender_M9D47D
             this.minimizeButton = new System.Windows.Forms.Button();
             this.itallapButton = new System.Windows.Forms.Button();
             this.kifizetesButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.groupBoxK.SuspendLayout();
             this.groupBoxB.SuspendLayout();
             this.SuspendLayout();
@@ -148,9 +149,21 @@ namespace Bartender_M9D47D
             this.kifizetesButton.UseVisualStyleBackColor = true;
             this.kifizetesButton.Click += new System.EventHandler(this.kifizetesButton_Click);
             // 
+            // resetButton
+            // 
+            this.resetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.resetButton.Location = new System.Drawing.Point(636, 5);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(151, 50);
+            this.resetButton.TabIndex = 3;
+            this.resetButton.Text = "Új elrendezés";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
             // ablak
             // 
             this.ClientSize = new System.Drawing.Size(1150, 640);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.kifizetesButton);
             this.Controls.Add(this.itallapButton);
             this.Controls.Add(this.minimizeButton);
@@ -183,6 +196,7 @@ namespace Bartender_M9D47D
         private System.Windows.Forms.Label belsoLabel;
         private System.Windows.Forms.Label kulsoLabel;
         private System.Windows.Forms.Button kifizetesButton;
+        private System.Windows.Forms.Button resetButton;
     }
 }
 

@@ -136,6 +136,7 @@ namespace Bartender_M9D47D
             this.minimizeButton.Location = new Point(ScreenWidth() - 110, 5);
             this.itallapButton.Location = new Point(ScreenWidth() - 225, 5);
             this.kifizetesButton.Location = new Point(ScreenWidth() - 355, 5);
+            this.resetButton.Location = new Point(ScreenWidth() - 515, 5);
             this.pluszK.Location = new Point((ScreenWidth() / 3) * 2 - 5, 60);
             this.pluszB.Location = new Point(5, 60);
             this.groupBoxB.Location = new Point(10, 60);
@@ -203,6 +204,32 @@ namespace Bartender_M9D47D
             }
             catch (Exception exception)
             { 
+            }
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < tablesB.Count; i++)
+            {
+                try
+                {
+                    File.Delete("tables/table" + i + "B.xml");
+                }
+                catch (Exception exception)
+                { 
+                }
+                tablesB[i].Hide();
+            }
+            for (int i = 0; i < tablesK.Count; i++)
+            {
+                try
+                {
+                    File.Delete("tables/table" + i + "K.xml");
+                }
+                catch (Exception exception)
+                {
+                }
+                tablesK[i].Hide();
             }
         }
 
