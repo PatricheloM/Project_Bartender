@@ -1,30 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE table SYSTEM "tables.dtd"[]>
 <?xml-stylesheet type="text/css" href="tables.css"?>
-<table x="139" y="301">
+<table x="336" y="256">
   <item>
     <name>HEINEKEN</name>
     <price>450</price>
-    <invoice>PATRIK</invoice>
-  </item>
-  <item>
-    <name>VÍZ</name>
-    <price>250</price>
-    <invoice>1</invoice>
-  </item>
-  <item>
-    <name>NACHOS</name>
-    <price>600</price>
-    <invoice>1</invoice>
-  </item>
-  <item>
-    <name>TÁTRA TEA 52</name>
-    <price>900</price>
-    <invoice>PATRIK</invoice>
-  </item>
-  <item>
-    <name>TÁTRA TEA 52</name>
-    <price>900</price>
-    <invoice>PATRIK</invoice>
+    <invoice>PATIRK</invoice>
   </item>
 </table>

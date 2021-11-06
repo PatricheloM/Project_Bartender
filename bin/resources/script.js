@@ -16,7 +16,7 @@ function add() {
 	var price = Number(_2.value);
 	if (name.length > 0 && !isNaN(price)) {
 		text = text.substring(text.length - 9, 8);
-		text = text + "<item id='12'><name>" + name + "</name><price>" + price + "</price></item></drinks>";
+		text = text + "<item id='" + nextID + "'><name>" + name + "</name><price>" + price + "</price></item></drinks>";
 		console.log(text);
 		document.getElementById('nameAdd').value = "";
 		document.getElementById('priceAdd').value = "";
@@ -25,7 +25,8 @@ function add() {
 		document.getElementById('nameAdd').style.display = 'none';
 		document.getElementById('priceAdd').style.display = 'none';
 		document.getElementById('add').style.display = 'none';
-		load(text);
+		nextID += 1
+		//location.reload();
 	}
 	else
 	{	
@@ -43,49 +44,58 @@ function openAdd() {
 	document.getElementById('add').style.display = 'inline';
 }
 
-var text = "<drinks>" + 
-"<item id='1'>" + 
-"<name>Heineken</name>" + 
-"<price>450</price>" + 
-"</item>" + 
-"<item id='2'>" + 
-"<name>RedBull</name>" + 
-"<price>500</price>" + 
-"</item>" + 
-"<item id='3'>" + 
-"<name>Korsó Soproni</name>" + 
-"<price>350</price>" + 
-"</item>" + 
-"<item id='4'>" + 
-"<name>Tátratea 72</name>" + 
-"<price>900</price>" + 
-"</item>" + 
-"<item id='5'>" + 
-"<name>Tátratea 62</name>" + 
-"<price>900</price>" + 
-"</item>" + 
-"<item id='6'>" + 
-"<name>Tátratea 52</name>" + 
-"<price>900</price>" + 
-"</item>" + 
-"<item id='7'>" + 
-"<name>Víz</name>" + 
-"<price>250</price>" + 
-"</item>" + 
-"<item id='8'>" + 
-"<name>CocaCola</name>" + 
-"<price>350</price>" + 
-"</item>" + 
-"<item id='9'>" + 
-"<name>Fanta</name>" + 
-"<price>350</price>" + 
-"</item>" + 
-"<item id='10'>" + 
-"<name>Kinley</name>" + 
-"<price>350</price>" + 
-"</item>" + 
-"<item id='11'>" + 
-"<name>Nachos</name>" + 
-"<price>600</price>" + 
-"</item>" + 
-"</drinks>";
+var text =  "<drinks>" + 
+ "<item id='1'>" + 
+ "<name>Heineken</name>" + 
+ "<price>450</price>" + 
+ "</item>" + 
+ "<item id='2'>" + 
+ "<name>RedBull</name>" + 
+ "<price>500</price>" + 
+ "</item>" + 
+ "<item id='3'>" + 
+ "<name>KorsóSoproni</name>" + 
+ "<price>350</price>" + 
+ "</item>" + 
+ "<item id='4'>" + 
+ "<name>Tátratea72</name>" + 
+ "<price>900</price>" + 
+ "</item>" + 
+ "<item id='5'>" + 
+ "<name>Tátratea62</name>" + 
+ "<price>900</price>" + 
+ "</item>" + 
+ "<item id='6'>" + 
+ "<name>Tátratea52</name>" + 
+ "<price>900</price>" + 
+ "</item>" + 
+ "<item id='7'>" + 
+ "<name>Víz</name>" + 
+ "<price>250</price>" + 
+ "</item>" + 
+ "<item id='8'>" + 
+ "<name>CocaCola</name>" + 
+ "<price>350</price>" + 
+ "</item>" + 
+ "<item id='9'>" + 
+ "<name>Fanta</name>" + 
+ "<price>350</price>" + 
+ "</item>" + 
+ "<item id='10'>" + 
+ "<name>Kinley</name>" + 
+ "<price>350</price>" + 
+ "</item>" + 
+ "<item id='11'>" + 
+ "<name>Nachos</name>" + 
+ "<price>600</price>" + 
+ "</item>" + 
+ "<item id='12'>" + 
+ "<name>Gin</name>" + 
+ "<price>900</price>" + 
+ "</item>" + 
+ "<item id='13'>" + 
+ "<name>Rum</name>" + 
+ "<price>600</price>" + 
+ "</item>" + 
+ "</drinks>";
+ var nextID = 14;

@@ -46,4 +46,12 @@
     <name>Nachos</name>
     <price>600</price>
   </item>
+  <item id="12">
+    <name>Gin</name>
+    <price>900</price>
+  </item>
+  <item id="13">
+    <name>Rum</name>
+    <price>600</price>
+  </item>
 </drinks>

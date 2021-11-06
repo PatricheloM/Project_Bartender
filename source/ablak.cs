@@ -57,6 +57,7 @@ namespace Bartender_M9D47D
         int hoveredObject;
 
         publicExceptionHandling publicExceptionHandling = new publicExceptionHandling();
+        xmlHandling xmlHandling = new xmlHandling();
 
         //initialize-------------------------------------------------------------------------------------------------
 
@@ -304,13 +305,13 @@ namespace Bartender_M9D47D
         }
 
         //drag and drop B--------------------------------------------------------------------------------------------------
-
+        
         private void newPXB_MouseMove(object sender, MouseEventArgs e)
         {
             int senderHash = sender.GetHashCode();
             int[] hashCodesK = new int[tablesB.Count()];
 
-            for (int i = 0; i < tablesK.Count(); i++)
+            for (int i = 0; i < tablesB.Count(); i++)
             {
                 hashCodesK[i] = tablesB[i].GetHashCode();
                 if (hashCodesK[i] == senderHash)

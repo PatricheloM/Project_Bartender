@@ -1,0 +1,16 @@
+How to host the server on localhost with Windows IIS:
+- Open IIS
+- Add webpage
+- Fill the name with something
+- Set the physical path to this folder
+- Set the IP to your machines IPv4
+- Set the port to an already port forwarded port
+- Close the form
+- Right click on this folder
+- Select properties
+- Select the Security tab then Edit then Add
+- In the Enter the object names to select box, type <Machinename>\IIS_IUSRS, select Check Names, and then select OK (<Machinename> is a placeholder for the machine's name)
+- Select the Read check box, and then select OK
+- In the Properties dialog box for the folder, select OK
+- Change the serverPath.json to the machine's IPv4 and the port separated with a ':' and starting with "http://"
+- Now you can acces the site with the machine's IPv4 and with the port separated with a ':'
