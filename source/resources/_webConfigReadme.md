@@ -9,7 +9,7 @@ How to host the server on localhost with Windows IIS:
 - Right click on this folder
 - Select properties
 - Select the Security tab then Edit then Add
-- In the Enter the object names to select box, type <Machinename>\IIS_IUSRS, select Check Names, and then select OK (<Machinename> is a placeholder for the machine's name)
+- In the Enter the object names to select box, type "Machinename"\IIS_IUSRS, select Check Names, and then select OK ("Machinename" is a placeholder for the machine's name)
 - Select the Read check box, and then select OK
 - In the Properties dialog box for the folder, select OK
 - Change the serverPath.json to the machine's IPv4 and the port separated with a ':' and starting with "http://"

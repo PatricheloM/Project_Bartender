@@ -129,6 +129,40 @@ namespace Bartender_M9D47D
             }
         }
 
+        void refreshB()
+        {
+            string[] xmls = Directory.GetFiles("tables/", "*B.xml", SearchOption.TopDirectoryOnly);
+            int[] savedB = new int[xmls.Length];
+            for (int i = 0; i < xmls.Length; i++)
+            {
+                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + i + "B.xml").Count())
+                {
+                    tablesB[i].Image = Image.FromFile("resources/foglalt.png");
+                }
+                else
+                {
+                    tablesB[i].Image = Image.FromFile("resources/szabad.png");
+                }
+            }
+        }
+
+        void refreshK()
+        {
+            string[] xmls = Directory.GetFiles("tables/", "*K.xml", SearchOption.TopDirectoryOnly);
+            int[] savedK = new int[xmls.Length];
+            for (int i = 0; i < xmls.Length; i++)
+            {
+                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + i + "K.xml").Count())
+                {
+                    tablesK[i].Image = Image.FromFile("resources/foglalt.png");
+                }
+                else
+                {
+                    tablesK[i].Image = Image.FromFile("resources/szabad.png");
+                }
+            }
+        }
+
         public ablak()
         {
             InitializeComponent();
@@ -177,35 +211,8 @@ namespace Bartender_M9D47D
             kifizetes kifizetes = new kifizetes();
             kifizetes.ShowDialog();
 
-            try
-            {
-                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "B.xml").Count())
-                {
-                    tablesB[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
-                }
-                else
-                {
-                    tablesB[hoveredObject].Image = Image.FromFile("resources/szabad.png");
-                }
-            }
-            catch (Exception exception)
-            {
-            }
-
-            try
-            {
-                if (File.ReadLines("tables/_table.xml").Count() != File.ReadLines("tables/table" + hoveredObject + "K.xml").Count())
-                {
-                    tablesK[hoveredObject].Image = Image.FromFile("resources/foglalt.png");
-                }
-                else
-                {
-                    tablesK[hoveredObject].Image = Image.FromFile("resources/szabad.png");
-                }
-            }
-            catch (Exception exception)
-            { 
-            }
+            refreshB();
+            refreshK();
         }
 
         private void resetButton_Click(object sender, EventArgs e)

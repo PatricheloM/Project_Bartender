@@ -20,6 +20,8 @@ namespace Bartender_M9D47D
 
         List<Label> itemLabels = new List<Label>();
 
+        int sum = 0;
+
         public kifizetes()
         {
             InitializeComponent();
@@ -41,7 +43,6 @@ namespace Bartender_M9D47D
                 itemLabels[i].Hide();
             }
             itemLabels.Clear();
-            int sum = 0;
             string selected = comboBox.SelectedItem.ToString();
             if (comboBox.SelectedItem != null)
             {
@@ -100,7 +101,7 @@ namespace Bartender_M9D47D
 
         private void payButton_Click(object sender, EventArgs e)
         {
-            if (comboBox.SelectedItem != null)
+            if (MessageBox.Show("Biztos ki lett fizetve a számla? (" + sum + " Ft)", "Kifizetés", MessageBoxButtons.OKCancel) == DialogResult.OK && comboBox.SelectedItem != null)
             {
                 XDocument doc = XDocument.Load(xmlHandling.getFoundXml());
 
