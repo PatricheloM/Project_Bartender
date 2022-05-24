@@ -1,5 +1,4 @@
-# HLPL2: Project - "Bartender"
-Hight Level Programming Languages 2: Project Repository - "Bartender"
+# Project Bartender
 
 A software for pubs (and/or restaurant). Main focus is speed, compatibility, user friendliness, implementability.
 
